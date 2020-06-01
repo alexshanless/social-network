@@ -19,7 +19,7 @@ function App(props) {
           <Route
             path="/dialogs"
             render={() => (
-              <Dialogs state={props.state.messeagesPage}  />
+              <Dialogs state={props.state.messagePage}  />
             )}
           />
           <Route
