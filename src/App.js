@@ -9,6 +9,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 
 
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -24,7 +25,7 @@ function App(props) {
           />
           <Route
             path="/profile"
-            render={() => <Profile state={props.state.profilePage} />}
+            render={() => <Profile state={props.state.profilePage} addPost={props.addPost} />}
           />
         </div>
       </div>
