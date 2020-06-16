@@ -7,10 +7,6 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
 import { updateNewPostText } from "./redux/state";
 
-
-
-
-
 function App(props) {
   return (
     <BrowserRouter>
@@ -20,13 +16,16 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs state={props.state.messagePage}  />
-            )}
+            render={() => <Dialogs state={props.state.messagePage} />}
           />
           <Route
             path="/profile"
-            render={() => <Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />}
+            render={() => (
+              <Profile
+                profilePage={props.state.profilePage}
+                dispatch={props.dispatch}
+              />
+            )}
           />
         </div>
       </div>
