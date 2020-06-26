@@ -5,9 +5,9 @@ import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
-import { updateNewPostText } from "./redux/state";
 
 function App(props) {
+  debugger;
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -16,7 +16,7 @@ function App(props) {
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
-            render={() => <Dialogs store={props.store}  />}
+            render={() => <Dialogs store={props.store} />}
           />
           <Route
             path="/profile"
