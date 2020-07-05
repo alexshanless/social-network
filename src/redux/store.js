@@ -1,7 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
 const SEND_MESSAGE = "SEND_MESSAGE";
 
 let store = {
@@ -9,6 +9,8 @@ let store = {
     profilePage: {
       posts: [
         { id: 1, message: "sup, catbro?", likesCount: 12 },
+        { id: 1, message: "sup, catbro?", likesCount: 12 },
+        { id: 2, message: "First post , sup?", likesCount: 35 },
         { id: 2, message: "First post , sup?", likesCount: 35 },
       ],
       newPostText: "social-network",
@@ -55,6 +57,7 @@ let store = {
       this._callSubscriber(this._state);
     } else if (action.type === "UPDATE-NEW-POST-TEXT") {
       this._state.profilePage.newPostText = action.newText;
+      this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
     } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
       this._state.messagePage.newMessageBody = action.body;
@@ -62,16 +65,25 @@ let store = {
     } else if (action.type === SEND_MESSAGE) {
       let body = this._state.messagePage.newMessageBody;
       this._state.messagePage.newMessageBody = "";
-      this._state.messagePage.messages.push({ id: 6, message: body });
+      this._state.messagePage.messages.push({ id: 7, message: body },)
       this._callSubscriber(this._state);
     }
   },
 };
 
+export const addPostActionCreator = () => ({
+  type: "ADD-POST",
+});
 
+export const updateNewPostTextActionCreator = (text) => ({
+  type: "UPDATE-NEW-POST-TEXT",
+  newText: text,
+});
 
-
-
-
+export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+export const updateNewMessageBodyCreator =  (body) => ({
+  type: UPDATE_NEW_MESSAGE_BODY, body: body
+})
+ 
 export default store;
 window.store = store;
