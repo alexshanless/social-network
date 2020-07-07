@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator
-} from "../../../redux/store";
+} from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
   debugger;
