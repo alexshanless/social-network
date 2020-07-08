@@ -9,7 +9,8 @@ import { Route } from 'react-router-dom';
 
 
 function App(props) {
- console.log(props)
+ 
+ 
   return (
     
       <div className="app-wrapper">
