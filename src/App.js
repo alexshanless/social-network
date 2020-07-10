@@ -25,8 +25,7 @@ function App(props) {
             path="/profile"
             render={() => (
               <Profile
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch}
+                store={props.store}
               />
             )}
           />
