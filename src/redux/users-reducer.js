@@ -1,37 +1,14 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
-
-
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 
 let initialState = {
-
-  users: [
-    // {
-    //   id: 1,
-    //   photoUrl : 'https://www.popsci.com/resizer/oBw2zifFCqH3deU6vy2bPRSG99Q=/760x456/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WMD5M52LJFBEBIHNEEABHVB6LA.jpg',
-    //   followed: true,
-    //   fullname: "Dima",
-    //   status: "Wassup, yo!",
-    //   location: { city: "Minsk", country: "Belarus" },
-    // },
-    // {
-    //   id: 2,
-    //   photoUrl : 'https://www.popsci.com/resizer/oBw2zifFCqH3deU6vy2bPRSG99Q=/760x456/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WMD5M52LJFBEBIHNEEABHVB6LA.jpg',
-    //   followed: false,
-    //   fullname: "Apex",
-    //   status: "Wassup, yo!",
-    //   location: { city: "Athena", country: "Greece" },
-    // },
-    // {
-    //   id: 3,
-    //   photoUrl : 'https://www.popsci.com/resizer/oBw2zifFCqH3deU6vy2bPRSG99Q=/760x456/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WMD5M52LJFBEBIHNEEABHVB6LA.jpg',
-    //   followed: false,
-    //   fullname: "Anna",
-    //   status: "Cimislia is the best",
-    //   location: { city: "Sea", country: "Usa" },
-    // },
-  ],
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 19,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -59,7 +36,13 @@ const usersReducer = (state = initialState, action) => {
       };
 
     case SET_USERS: {
-      return { ...state, users: [...state.users, ...action.users] };
+      return { ...state, users: action.users };
+    }
+    case SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.currentPage };
+    }
+    case SET_TOTAL_USERS_COUNT: {
+      return { ...state, totalUsersCount: action.count };
     }
 
     default:
@@ -80,6 +63,15 @@ export const unfollowAC = (userId) => ({
 export const setUsersAC = (users) => ({
   type: SET_USERS,
   users,
+});
+
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage,
+});
+export const setTotalUsersCountAC = (totalUsersCount) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  count: totalUsersCount,
 });
 
 export default usersReducer;
