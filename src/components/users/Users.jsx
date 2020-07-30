@@ -3,7 +3,7 @@ import styles from "./users.module.css";
 import * as axios from "axios";
 import userPhoto from "../../assests/images/avatar.png";
 
-class Users extends React.Component {
+class UserAPIComponent extends React.Component {
   componentDidMount() {
     axios
       .get(
@@ -97,4 +97,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default UserAPIComponent;
