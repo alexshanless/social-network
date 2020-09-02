@@ -1,8 +1,6 @@
 import React from "react";
-import * as axios from "axios";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import { getUserProfile } from "./../../redux/profile-reducer";
 import { withAuthRedirect } from "./../../hoc/WithAuthRedirect";
@@ -10,7 +8,7 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
+    let userId = this.props.userId;
     if (!userId) {
       userId = 2;
     }
