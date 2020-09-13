@@ -5,7 +5,6 @@ import Message from "./Messages/Message";
 import { Field, reduxForm } from "redux-form";
 
 const Dialogs = (props) => {
- 
   let state = props.messagePage;
 
   let dialogsElements = state.dialogs.map((dialog) => (
@@ -15,7 +14,6 @@ const Dialogs = (props) => {
   let messageElements = state.messages.map((m) => (
     <Message message={m.message} />
   ));
-  let newMessageBody = state.newMessageBody;
 
   let addNewMessage = (values) => {
     props.sendMessage(values.newMessageBody);
