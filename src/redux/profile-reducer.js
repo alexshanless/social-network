@@ -35,8 +35,9 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPostActionCreator = () => ({
+export const addPostActionCreator = (newPostText) => ({
   type: ADD_POST,
+  newPostText,
 });
 
 export const setStatus = (status) => ({
@@ -66,6 +67,5 @@ export const updateStatus = (status) => (dispatch) => {
     }
   });
 };
-
 
 export default profileReducer;
