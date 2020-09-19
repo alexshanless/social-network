@@ -23,7 +23,7 @@ export const usersAPI = {
     return instance.delete(`follow/${userId}`);
   },
   getProfile(userId) {
-    console.warn("Obsolete method. Use profileAPI")
+    console.warn("Obsolete method. Use profileAPI");
     return profileAPI.getProfile(userId);
   },
 };
@@ -43,5 +43,11 @@ export const profileAPI = {
 export const authAPI = {
   me() {
     return instance.get(`auth/me`);
+  },
+  login(email, password, rememberMe = false) {
+    return instance.post(`auth/login`, { email, password, rememberMe });
+  },
+  logout() {
+    return instance.delete(`auth/login`);
   },
 };
