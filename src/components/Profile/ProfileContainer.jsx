@@ -1,7 +1,6 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-
 import {
   getUserProfile,
   getStatus,
@@ -15,6 +14,9 @@ class ProfileContainer extends React.Component {
     let userId = this.props.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
+      if (!userId) {
+        this.props.history.push("/login");
+      }
     }
     this.props.getUserProfile(userId);
     this.props.getStatus(userId);
