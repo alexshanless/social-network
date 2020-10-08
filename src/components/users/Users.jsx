@@ -3,30 +3,18 @@ import styles from "./users.module.css";
 import userPhoto from "../../assests/images/avatar.png";
 import { NavLink } from "react-router-dom";
 import { usersAPI } from "./../../api/api";
+import Paginator from "../common/Paginator/Paginator";
 
 let Users = (props) => {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
-  let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
   return (
     <div>
-      <div>
-        {pages.map((p) => {
-          return (
-            <span
-              className={props.currentPage === p && styles.selectedPage}
-              onClick={() => {
-                props.onPageChanged(p);
-              }}
-            >
-              {p}
-            </span>
-          );
-        })}
-      </div>
+      <Paginator
+        currentPage={props.currentPage}
+        onPageChanged={props.onPageChanged}
+        totalUsersCount={props.totalUsersCount}
+        pageSize={props.pageSize}
+      />
       {props.users.map((u) => (
         <div key={u.id}>
           <span>
@@ -43,7 +31,7 @@ let Users = (props) => {
                 <button
                   disabled={props.followingInProgress.some((id) => id === u.id)}
                   onClick={() => {
-                   props.unfollow(u.id)
+                    props.unfollow(u.id);
                   }}
                 >
                   Unfollow
